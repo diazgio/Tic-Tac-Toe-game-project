@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+# Welcome the player to the game
+puts " Hello and welcome to Tic Tac Toe Game."
+# Ask the first player for nikename
+puts "First player enter your nickname: "
+# save player one name
+player_one = gets.chomp
+# print out player one name
+puts "First player name: #{player_one} "
+# Ask the second player nickname
+puts "Second player enter your nickname: "
+# save player two nickname
+player_two = gets.chomp
+# print out
+puts "Second player name: #{player_two} "
+puts "First player choose your Token, write: X or O"
+item_one = gets.chomp
+item_two = []
+puts "Player 1 has #{item_one} and Player 2 has #{item_two}"
+puts "Let's start"
+puts table = "[{},{},{},
+               {},{},{},
+               {},{},{}]"
+puts "#{player_one}, now it's your move"
+puts "#{item_one} in row no."
+row = gets.chomp(x, y)
