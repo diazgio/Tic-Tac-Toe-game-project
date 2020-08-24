@@ -23,5 +23,6 @@ puts table = "{[],[],[],
                [],[],[],
                [],[],[]}"
 puts "#{player_one}, now it's your move"
-puts "#{item_one} in row no."
-row = gets.chomp(x, y)
+puts "Puts #{item_one} in: "
+entry = gets.chomp
+puts "Your #{item_one} is in: #{table.with_index}#{entry}" 
