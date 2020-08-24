@@ -14,15 +14,31 @@ puts "Second player enter your nickname: "
 player_two = gets.chomp
 # print out
 puts "Second player name: #{player_two} "
+# Election of tokens
 puts "First player choose your Token, write: X or O"
 item_one = gets.chomp
-item_two = []
-puts "Player 1 has #{item_one} and Player 2 has #{item_two}"
+item_two = "O"
+# print out the tokens for the players
+puts "Player one has #{item_one} and Player two has #{item_two}"
+# Game start
 puts "Let's start"
-puts table = "{[],[],[],
-               [],[],[],
-               [],[],[]}"
-puts "#{player_one}, now it's your move"
-puts "Puts #{item_one} in: "
+# Present the table and the positons to the users
+puts "{[0],[1],[2],
+[3],[4],[5],
+[6],[7],[8]}"
+# Create a empty array with nine positions
+table = [[],[],[],[],[],[],[],[],[]]
+# Ask to the players to choose the first position of his token
+puts "#{player_one}, now it's your move, puts #{item_one} in: "
 entry = gets.chomp
-puts "Your #{item_one} is in: #{table.with_index}#{entry}" 
+puts "Your #{item_one} is in: #{table.each_with_index(entry)}" 
+puts "{[0],[1],[2],
+[3],[X],[5],
+[6],[7],[8]}"
+puts "#{player_two}, now it's your move, puts #{item_two} in: "
+entry_2 = gets.chomp
+# print the position that they choose. example!
+puts "Your #{item_one} is in: #{table.each_with_index(entry_2)}"
+puts "{[0],[1],[2],
+[3],[X],[5],
+[6],[7],[O]}"
