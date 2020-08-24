@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# 🧐 Tic-Tac-Toe-Game project
 
 > One paragraph statement about the project.
 
@@ -8,52 +8,60 @@
 
 Additional description about the project and its features.
 
-## Built With
+## 🔧 Built With
 
-- Major languages,
-- frameworks,
-- technologies used
+- Ruby v.2.7.0p0
+- Using Linters for Ruby Rubocop.
+- Using Bundler.
 
-## Live Demo
-
-[Live Demo Link](https://livedemo.com)
-
-
-## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
+## 🛠 Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+- Go to the main page of the repo.
+- Press the "Code" button and get the repo link.
+- Clone it using git clone.
 
-### Setup
+### 📝 Prerequisites
 
-### Install
+- Ruby -v2.7.0p0
+
+### 📝 Setup
+
+ - Open a terminal
+ - Copy this code : 
+
+        ```
+        git clone "put the link from github repo"
+        ```
+
+- Go to the bin folder with:
+        ```
+        cd bin
+        ```
+- Run the program with this code :
+
+        ```
+        ruby main.rb
+        ```
 
 ### Usage
 
-### Run tests
+- Personal Project - Create a Tic-Tac-Toe-Game to run basic concepts of Ruby language just for learning propose.
 
-### Deployment
+## 👤 Authors
 
+👤 **Giordano Díaz**
 
+- Github: [@diazgio](https://github.com/diazgio)
+- Twitter: [@giordano_diaz](https://twitter.com/giordano_diaz)
+- LinkenIn:[LinkenIn](www.linkedin.com/in/Giordano-Diaz)
 
-## Authors
+👤 **Sanad Walid Abujbara**
 
-👤 **Author1**
-
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
-
-👤 **Author2**
-
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- Github: [@sanadwj](https://github.com/sanadwj)
+- Twitter: [@sandooog](https://twitter.com/sandooog)
+- Linkedin: [sanad-abujbara](https://linkedin.com/in/sanad-abujbara)
 
 ## 🤝 Contributing
 
