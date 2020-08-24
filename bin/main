@@ -19,9 +19,9 @@ item_one = gets.chomp
 item_two = []
 puts "Player 1 has #{item_one} and Player 2 has #{item_two}"
 puts "Let's start"
-puts table = "[{},{},{},
-               {},{},{},
-               {},{},{}]"
+puts table = "{[],[],[],
+               [],[],[],
+               [],[],[]}"
 puts "#{player_one}, now it's your move"
 puts "#{item_one} in row no."
 row = gets.chomp(x, y)
