@@ -1,49 +1,6 @@
 #!/usr/bin/env ruby
 # rubocop: disable Style/StringLiterals
 
-# Welcome the player to the game
-puts " Hello and welcome to Tic Tac Toe Game."
-# Ask the first player for nikename
-puts "First player enter your nickname: "
-# save player one name
-player_one = gets.chomp
-# print out player one name
-puts "First player name: #{player_one} "
-# Ask the second player nickname
-puts "Second player enter your nickname: "
-# save player two nickname
-player_two = gets.chomp
-# print out
-puts "Second player name: #{player_two} "
-# Election of tokens
-puts "First player choose your Token, write: X or O"
-item_one = gets.chomp
-item_two = "O"
-# print out the tokens for the players
-puts "Player one has #{item_one} and Player two has #{item_two}"
-# Game start
-puts "Let's start"
-# Present the table and the positons to the users
-puts "{[0],[1],[2],
-[3],[4],[5],
-[6],[7],[8]}"
-# Create a empty array with nine positions
-table = [[], [], [], [], [], [], [], [], []]
-# Ask to the players to choose the first position of his token
-puts "#{player_one}, now it's your move, puts #{item_one} in: "
-entry = gets.chomp
-puts "Your #{item_one} is in: #{table.each_with_index(entry)}"
-puts "{[0],[1],[2],
-[3],[X],[5],
-[6],[7],[8]}"
-puts "#{player_two}, now it's your move, puts #{item_two} in: "
-entry_two = gets.chomp
-# print the position that they choose. example!
-puts "Your #{item_one} is in: #{table.each_with_index(entry_two)}"
-puts "{[0],[1],[2],
-[3],[X],[5],
-[6],[7],[O]}"
-
 class Board
   def initialize(board)
     @board = Array.new(9)
@@ -56,9 +13,9 @@ class Board
     board[6] = pos7
     board[7] = pos8
     board[8] = pos9
-
+    
   end
-
+  
   def win?
     @win = true if pos1 == pos2 && pos2 == pos3
     @win = true if pos1 == pos5 && pos5 == pos9
@@ -68,7 +25,51 @@ class Board
     @win = true if pos3 == pos6 && pos6 == pos9
     @win = true if pos4 == pos5 && pos5 == pos6
     @win = true if pos7 == pos8 && pos8 == pos9
-
+    
   end
 end
+
+class Player
+  def initialize(name, token)
+    @name = name
+    @token = token
+  end
+end
+
+class GamePlay
+  def get_actions
+    
+  end
+end
+
+# Welcome the player to the game
+puts " Hello and welcome to Tic Tac Toe Game."
+# Ask the first player for nikename
+puts "First player enter your nickname: "
+# save player one name
+name_one = gets.chomp
+player_one = Player.new(name_one, 'X')
+# print out player one name
+puts "First player name: #{name_one}, your token is 'X' "
+# Ask the second player nickname
+puts "Second player enter your nickname: "
+# save player two nickname
+name_two = gets.chomp
+player_two = Player.new(name_two, 'O')
+# print out player two name
+puts "Second player name: #{name_two}, your token is 'O' "
+# Game start
+puts "Let's start"
+puts " "
+puts " pos1 | pos2 | pos3 "
+puts "-------------------- "
+puts " pos4 | pos5 | pos6  "
+puts "-------------------- "
+puts " pos7 | pos8 | pos9 "
+puts " "
+puts "#{name_one} choose a position from: 1 to 9: "
+choose = gets.chomp.to_i
+puts "#{name_two} choose a number that is not taken: "
+choose_two = gets.chomp.to_i
+
 # rubocop: enable Style/StringLiterals
