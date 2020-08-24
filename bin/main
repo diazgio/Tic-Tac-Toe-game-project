@@ -43,4 +43,32 @@ puts "Your #{item_one} is in: #{table.each_with_index(entry_two)}"
 puts "{[0],[1],[2],
 [3],[X],[5],
 [6],[7],[O]}"
+
+class Board
+  def initialize(board)
+    @board = Array.new(9)
+    board[0] = pos1
+    board[1] = pos2
+    board[2] = pos3
+    board[3] = pos4
+    board[4] = pos5
+    board[5] = pos6
+    board[6] = pos7
+    board[7] = pos8
+    board[8] = pos9
+
+  end
+
+  def win?
+    @win = true if pos1 == pos2 && pos2 == pos3
+    @win = true if pos1 == pos5 && pos5 == pos9
+    @win = true if pos1 == pos4 && pos4 == pos7
+    @win = true if pos2 == pos5 && pos5 == pos8
+    @win = true if pos3 == pos5 && pos5 == pos7
+    @win = true if pos3 == pos6 && pos6 == pos9
+    @win = true if pos4 == pos5 && pos5 == pos6
+    @win = true if pos7 == pos8 && pos8 == pos9
+
+  end
+end
 # rubocop: enable Style/StringLiterals
