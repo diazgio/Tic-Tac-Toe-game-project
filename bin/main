@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# rubocop: disable Style/StringLiterals
 
 # Welcome the player to the game
 puts " Hello and welcome to Tic Tac Toe Game."
@@ -27,18 +28,19 @@ puts "{[0],[1],[2],
 [3],[4],[5],
 [6],[7],[8]}"
 # Create a empty array with nine positions
-table = [[],[],[],[],[],[],[],[],[]]
+table = [[], [], [], [], [], [], [], [], []]
 # Ask to the players to choose the first position of his token
 puts "#{player_one}, now it's your move, puts #{item_one} in: "
 entry = gets.chomp
-puts "Your #{item_one} is in: #{table.each_with_index(entry)}" 
+puts "Your #{item_one} is in: #{table.each_with_index(entry)}"
 puts "{[0],[1],[2],
 [3],[X],[5],
 [6],[7],[8]}"
 puts "#{player_two}, now it's your move, puts #{item_two} in: "
-entry_2 = gets.chomp
+entry_two = gets.chomp
 # print the position that they choose. example!
-puts "Your #{item_one} is in: #{table.each_with_index(entry_2)}"
+puts "Your #{item_one} is in: #{table.each_with_index(entry_two)}"
 puts "{[0],[1],[2],
 [3],[X],[5],
 [6],[7],[O]}"
+# rubocop: disable Style/StringLiterals
