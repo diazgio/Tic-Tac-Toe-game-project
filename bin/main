@@ -4,6 +4,15 @@
 class Board
   def initialize(board)
     @board = Array.new(9)
+    p1 = Array[0]
+    p2 = Array[1]
+    p3 = Array[2]
+    p4 = Array[3]
+    p5 = Array[4]
+    p6 = Array[5]
+    p7 = Array[6]
+    p8 = Array[7]
+    p9 = Array[8]
   end
   
   def win?
@@ -28,10 +37,9 @@ class Player
   def get_actions
     puts "Please choose number from 0 to 8"
     choice = gets.chomp.to_i
-    if Array[choice].empty? == true
+    if Array[choice] == " "
       Array[choice].each_with_index do |token, choice|
-        return Array[choice].push(token)
-        puts Array[choice]
+        Array[choice].push(drawing_token)
       end
     else
       puts "This position is taken please choose another one"
@@ -41,18 +49,22 @@ end
 
 class GamePlay
   def drawing_token(p1,p2,p3,p4,p5,p6,p7,p8,p9)
+    
     puts " #{p1} | #{p2} | #{p3} "
     puts "-------------------- "
-    puts " #{p4} | #{p5} | #{p6}  "
+    puts " #{p4} | #{p5} | #{p6} "
     puts "-------------------- "
     puts " #{p7} | #{p8} | #{p9} "
     puts " "
   end
 
+  def valid_move?(board, choice)
+    if choice.between?(0,8)
+       return true
+    end
+ end
+
   def turn(board)
-    puts "Please enter 1-9:"
-    user_input = gets.strip
-    index = input_to_index(user_input)
     if valid_move?(board, index)
       move(board, index, current_player(board))
       turn(board)
@@ -89,7 +101,7 @@ while !game_ends
   puts "Let's start"
   table = Board.new(initialize)
   start = GamePlay.new
-  start.drawing_token(" "," ", " "," "," "," "," " ," "," " )
+  start.drawing_token( " ", " ", " ", " ", " ", " ", " ", " ", " ")
   loop do
     for i in 0..8
       if i % 2 == 0
