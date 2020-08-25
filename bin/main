@@ -4,16 +4,6 @@
 class Board
   def initialize(board)
     @board = Array.new(9)
-    board[0] = pos1
-    board[1] = pos2
-    board[2] = pos3
-    board[3] = pos4
-    board[4] = pos5
-    board[5] = pos6
-    board[6] = pos7
-    board[7] = pos8
-    board[8] = pos9
-    
   end
   
   def win?
@@ -37,9 +27,26 @@ class Player
 end
 
 class GamePlay
-  def get_actions
-    
+  def drawing_token(p1,p2,p3,p4,p5,p6,p7,p8,p9)
+    puts " #{p1} | #{p2} | #{p3} "
+    puts "-------------------- "
+    puts " #{p4} | #{p5} | #{p6}  "
+    puts "-------------------- "
+    puts " #{p7} | #{p8} | #{p9} "
+    puts " "
   end
+
+  def get_actions(arg)
+    if board[arg].empty?
+      board.each_with_index do |token, arg|
+        board[arg].push(token)
+      end 
+    else
+      puts "This position is taken please choose another one"
+    end
+  end
+
+  
 end
 
 # Welcome the player to the game
@@ -61,13 +68,13 @@ puts "Second player name: #{name_two}, your token is 'O' "
 # Game start
 puts "Let's start"
 puts " "
-puts " pos1 | pos2 | pos3 "
-puts "-------------------- "
-puts " pos4 | pos5 | pos6  "
-puts "-------------------- "
-puts " pos7 | pos8 | pos9 "
+puts " p0 | p1 | p2 "
+puts "-------------- "
+puts " p3 | p4 | p5  "
+puts "-------------- "
+puts " p6 | p7 | p8 "
 puts " "
-puts "#{name_one} choose a position from: 1 to 9: "
+puts "#{name_one} choose a position from: 0 to 8: "
 choose = gets.chomp.to_i
 puts "#{name_two} choose a number that is not taken: "
 choose_two = gets.chomp.to_i
