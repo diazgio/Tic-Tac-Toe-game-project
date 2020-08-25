@@ -4,7 +4,6 @@
 class Board
   def initialize
     @board = Array.new(9, " ")
-
   end
   
   def win?
@@ -34,20 +33,13 @@ class Player
     @token = token
   end
 
-  def input_index(input)
-    input - 1
-  end
-
-  def get_actions
+  def get_actions(arg)
     puts "Please choose number from 0 to 8"
     choice = gets.chomp.to_i
-    choice = input_index(choice)
-    if valid_move?
-      choice.each do |choice, token|
-        choice.push(drawing_token)
-      end
+    if choice.between?(0,8)
+      @board[choice] = @token
     else
-      puts "This position is taken please choose another one"
+      puts "Enter a correct number"
     end
   end
 end
@@ -103,7 +95,9 @@ while !game_ends
   loop do
     for i in 0..8
       if i % 2 == 0
-        player_choice = player_one.get_actions
+        player_choice = player_one.get_actions(table)
+      else
+        player_choice = player_two.get_actions(table)
       end
 
     end
