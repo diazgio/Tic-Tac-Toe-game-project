@@ -2,17 +2,9 @@
 # rubocop: disable Style/StringLiterals
 
 class Board
-  def initialize(board)
-    @board = Array.new(9)
-    p1 = Array[0]
-    p2 = Array[1]
-    p3 = Array[2]
-    p4 = Array[3]
-    p5 = Array[4]
-    p6 = Array[5]
-    p7 = Array[6]
-    p8 = Array[7]
-    p9 = Array[8]
+  def initialize
+    @board = Array.new(9, " ")
+
   end
   
   def win?
@@ -26,6 +18,14 @@ class Board
     @win = true if pos7 == pos8 && pos8 == pos9
     
   end
+
+  def display_board
+    puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
+    puts " ----------- "
+    puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
+    puts " ----------- "
+    puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
+  end
 end
 
 class Player
@@ -34,12 +34,17 @@ class Player
     @token = token
   end
 
+  def input_index(input)
+    input - 1
+  end
+
   def get_actions
     puts "Please choose number from 0 to 8"
     choice = gets.chomp.to_i
-    if Array[choice] == " "
-      Array[choice].each_with_index do |token, choice|
-        Array[choice].push(drawing_token)
+    choice = input_index(choice)
+    if valid_move?
+      choice.each do |choice, token|
+        choice.push(drawing_token)
       end
     else
       puts "This position is taken please choose another one"
@@ -48,18 +53,10 @@ class Player
 end
 
 class GamePlay
-  def drawing_token(p1,p2,p3,p4,p5,p6,p7,p8,p9)
-    
-    puts " #{p1} | #{p2} | #{p3} "
-    puts "-------------------- "
-    puts " #{p4} | #{p5} | #{p6} "
-    puts "-------------------- "
-    puts " #{p7} | #{p8} | #{p9} "
-    puts " "
-  end
+
 
   def valid_move?(board, choice)
-    if choice.between?(0,8)
+    if choice.between?(0,8) && !position_taken?(input)
        return true
     end
  end
@@ -99,9 +96,10 @@ while !game_ends
   # print out player two name
   puts "Second player name: #{name_two}, your token is 'O' "
   puts "Let's start"
-  table = Board.new(initialize)
+  table = Board.new
+  table.display_board
   start = GamePlay.new
-  start.drawing_token( " ", " ", " ", " ", " ", " ", " ", " ", " ")
+
   loop do
     for i in 0..8
       if i % 2 == 0
