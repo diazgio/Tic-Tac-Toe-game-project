@@ -24,6 +24,19 @@ class Player
     @name = name
     @token = token
   end
+
+  def get_actions
+    puts "Please choose number from 0 to 8"
+    choice = gets.chomp.to_i
+    if Array[choice].empty? == true
+      Array[choice].each_with_index do |token, choice|
+        return Array[choice].push(token)
+        puts Array[choice]
+      end
+    else
+      puts "This position is taken please choose another one"
+    end
+  end
 end
 
 class GamePlay
@@ -36,47 +49,61 @@ class GamePlay
     puts " "
   end
 
-  def get_actions(arg)
-    if board[arg].empty?
-      board.each_with_index do |token, arg|
-        board[arg].push(token)
-      end 
-    else
-      puts "This position is taken please choose another one"
+  def turn(board)
+    puts "Please enter 1-9:"
+    user_input = gets.strip
+    index = input_to_index(user_input)
+    if valid_move?(board, index)
+      move(board, index, current_player(board))
+      turn(board)
     end
+    display_board(board)
   end
+
 
   
 end
 
 # Welcome the player to the game
 puts " Hello and welcome to Tic Tac Toe Game."
-# Ask the first player for nikename
-puts "First player enter your nickname: "
-# save player one name
-name_one = gets.chomp
-player_one = Player.new(name_one, 'X')
-# print out player one name
-puts "First player name: #{name_one}, your token is 'X' "
-# Ask the second player nickname
-puts "Second player enter your nickname: "
-# save player two nickname
-name_two = gets.chomp
-player_two = Player.new(name_two, 'O')
-# print out player two name
-puts "Second player name: #{name_two}, your token is 'O' "
-# Game start
-puts "Let's start"
-puts " "
-puts " p0 | p1 | p2 "
-puts "-------------- "
-puts " p3 | p4 | p5  "
-puts "-------------- "
-puts " p6 | p7 | p8 "
-puts " "
-puts "#{name_one} choose a position from: 0 to 8: "
-choose = gets.chomp.to_i
-puts "#{name_two} choose a number that is not taken: "
-choose_two = gets.chomp.to_i
+
+#
+#
+#puts "#{name_two} choose a number that is not taken: "
+#choose_two = gets.chomp.to_i
+
+game_ends = false
+while !game_ends
+  puts "First player enter your nickname: "
+  # save player one name
+  name_one = gets.chomp
+  player_one = Player.new(name_one, 'X')
+  puts "First player name: #{name_one}, your token is 'X' "
+  # Ask the second player nickname
+  puts "Second player enter your nickname: "
+  # save player two nickname
+  name_two = gets.chomp
+  player_two = Player.new(name_two, 'O')
+  # print out player two name
+  puts "Second player name: #{name_two}, your token is 'O' "
+  puts "Let's start"
+  table = Board.new(initialize)
+  start = GamePlay.new
+  start.drawing_token(" "," ", " "," "," "," "," " ," "," " )
+  loop do
+    for i in 0..8
+      if i % 2 == 0
+        player_choice = player_one.get_actions
+      end
+
+    end
+
+
+  end
+
+  # asking move for each player
+  # displaying the board
+  # checking if there was a winner/draw
+end
 
 # rubocop: enable Style/StringLiterals
