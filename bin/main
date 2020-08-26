@@ -2,11 +2,12 @@
 # rubocop: disable Style/StringLiterals
 
 class Board
-  def initialize
+  def initialize(board)
     @board = Array.new(9, " ")
   end
   
   def win?
+    @win = false
     @win = true if board[0] == board[1] && board[1] == board[2]
     @win = true if board[0] == board[4] && board[4] == board[8]
     @win = true if board[0] == board[3] && board[3] == board[6]
@@ -15,7 +16,7 @@ class Board
     @win = true if board[2] == board[5] && board[5] == board[8]
     @win = true if board[3] == board[4] && board[4] == board[5]
     @win = true if board[6] == board[7] && board[7] == board[8]
-    
+    return win
   end
 
   def display_board
@@ -33,11 +34,13 @@ class Player
     @token = token
   end
 
-  def get_actions(arg)
+  def get_actions
     puts "Please choose number from 0 to 8"
     @choice = gets.chomp.to_i
+    Board.new self
     if @choice.between?(0,8) && valid_move?
-      board.initialize = @token
+      @board[choice] = @token
+      display_board
     else
       puts "Enter a correct number"
     end
@@ -50,7 +53,8 @@ class Player
   end
 
   def position_taken
-    if #@board[@choice] == "x" || @board[@choice] == "o"
+    Board.new self
+    if @board[@choice] == 'X' || @board[@choice] == 'O'
       puts " Error choose another postion"
       return true
     else
@@ -94,15 +98,15 @@ while !game_ends
   # print out player two name
   puts "Second player name: #{name_two}, your token is 'O' "
   puts "Let's start"
-  table = Board.new
-  table.display_board
+  board = Board.new(board)
+  board.display_board
 
   loop do
     for i in 0..8
       if i % 2 == 0
-        player_choice = player_one.get_actions(table)
+        player_choice = player_one.get_actions
       else
-        player_choice = player_two.get_actions(table)
+        player_choice = player_two.get_actions
       end
 
     end
