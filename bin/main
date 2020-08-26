@@ -39,40 +39,29 @@ class Player
     @choice = gets.chomp.to_i
   end
 
-  def get_actions
-
-    Board.new self
-    if input.between?(0,8)
-      @choice.input == @token
-      display_board
-    else
-      puts "Enter a correct number"
-    end
-  end
-=begin
-  def valid_move?
-    if  !position_taken
-       return true
-    end
-  end
-
-  def position_taken
-    Board.new self
-    if @board.each_with_index(@choice) == 'X' || @board.each_with_index(@choice) == 'O'
-      puts " Error choose another postion"
+  def position_taken?
+    if @board[input] == 'X' || @board[input] == 'O'
       return true
     else
       return false
-
     end
   end
-=end
-  def turn(board)
-    if valid_move?(board, index)
-      move(board, index, current_player(board))
-      turn(board)
+
+  def get_actions(board)
+    loop do
+      if input.between?(0,8)
+        return @choice
+      else
+        puts "Enter a correct number"
+      end
     end
-    display_board(board)
+  end
+
+  def turn(board, player, player_choice)
+    board[player_choice] = player.token
+    current_play = Board.new(board)
+    current_play.display_board
+    current_play.win?
   end
 
 
@@ -81,11 +70,6 @@ end
 
 # Welcome the player to the game
 puts " Hello and welcome to Tic Tac Toe Game."
-
-#
-#
-#puts "#{name_two} choose a number that is not taken: "
-#choose_two = gets.chomp.to_i
 
 game_ends = false
 while !game_ends
@@ -102,20 +86,29 @@ while !game_ends
   # print out player two name
   puts "Second player name: #{name_two}, your token is 'O' "
   puts "Let's start"
-  board = Board.new(board)
-  board.display_board
-
+  
   loop do
-    for i in 0..8
-      if i % 2 == 0
-        player_choice = player_one.get_actions
+    board = Board.new(board)
+    board.display_board
+    for i in 1..9
+      if i % 2 != 0
+        player_choice = player_one.get_actions(board)
+        current = player_one.turn(board, player_one, player_choice)
+        if current == true
+          game_ends = true
+          puts "#{player_one.name} WIN"
+          break
+        end
       else
-        player_choice = player_two.get_actions
+        player_choice = player_two.get_actions(board)
+        current = player_two.turn(board, player_one, player_choice)
+        if current == true
+          game_ends = true
+          puts "#{player_two.name} WIN"
+          break
+        end
       end
-
     end
-
-
   end
 
   # asking move for each player
