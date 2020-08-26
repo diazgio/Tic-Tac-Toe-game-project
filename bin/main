@@ -3,7 +3,7 @@
 
 class Board
   def initialize(board)
-    @board = Array.new(9, " ")
+    @board = Array.new(9, board)
   end
   
   def win?
@@ -37,6 +37,10 @@ class Player
   def input
     puts "Please choose number from 0 to 8"
     @choice = gets.chomp.to_i
+  end
+
+  def player_choice(board)
+    board[input] = 'X'
   end
 
   def position_taken?
@@ -111,9 +115,6 @@ while !game_ends
     end
   end
 
-  # asking move for each player
-  # displaying the board
-  # checking if there was a winner/draw
 end
 
 # rubocop: enable Style/StringLiterals
