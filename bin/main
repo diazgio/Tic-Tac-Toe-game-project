@@ -34,18 +34,22 @@ class Player
     @token = token
   end
 
-  def get_actions
+  def input
     puts "Please choose number from 0 to 8"
     @choice = gets.chomp.to_i
+  end
+
+  def get_actions
+
     Board.new self
-    if @choice.between?(0,8) && valid_move?
-      @board[choice] = @token
+    if input.between?(0,8)
+      @choice.input == @token
       display_board
     else
       puts "Enter a correct number"
     end
   end
-
+=begin
   def valid_move?
     if  !position_taken
        return true
@@ -54,7 +58,7 @@ class Player
 
   def position_taken
     Board.new self
-    if @board[@choice] == 'X' || @board[@choice] == 'O'
+    if @board.each_with_index(@choice) == 'X' || @board.each_with_index(@choice) == 'O'
       puts " Error choose another postion"
       return true
     else
@@ -62,7 +66,7 @@ class Player
 
     end
   end
-
+=end
   def turn(board)
     if valid_move?(board, index)
       move(board, index, current_player(board))
