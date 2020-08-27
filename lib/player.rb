@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# rubocop:disable Lint/UnreachableCode
 
 class Player
   attr_accessor :token, :name
@@ -25,3 +25,5 @@ class Player
     end
   end
 end
+
+# rubocop:enable Lint/UnreachableCode

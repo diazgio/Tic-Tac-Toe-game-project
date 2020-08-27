@@ -1,6 +1,8 @@
-# frozen_string_literal: true
+# rubocop: disable Metrics/AbcSize
 
-# rubocop:disable Style/Documentation
+# rubocop: disable Metrics/CyclomaticComplexity
+
+# rubocop: disable Metrics/PerceivedComplexity
 
 class Board
   attr_accessor :board
@@ -30,4 +32,8 @@ class Board
   end
 end
 
-# rubocop:enable Style/Documentation
+# rubocop: enable Metrics/AbcSize
+
+# rubocop: enable Metrics/CyclomaticComplexity
+
+# rubocop: enable Metrics/PerceivedComplexity

@@ -1,10 +1,8 @@
-# frozen_string_literal: true
-
 class Logic
   def self.turn(arr, player, player_choice)
     valid = false
     until valid
-      if arr[player_choice] == 'X' ||  arr[player_choice] == 'O'
+      if arr[player_choice] == 'X' || arr[player_choice] == 'O'
         puts 'Wrong postion, please choose another one'
         return valid
       else
@@ -30,7 +28,6 @@ class Logic
           return check
         else
           check = false
-          return check
         end
       else
         puts 'Sorry, wrong option please enter a valid option.'

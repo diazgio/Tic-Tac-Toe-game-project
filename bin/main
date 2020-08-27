@@ -2,6 +2,9 @@
 # frozen_string_literal: true
 
 # rubocop: disable Style/StringLiterals
+
+# rubocop: disable Style/GuardClause
+
 require_relative  '../lib/board.rb'
 require_relative  '../lib/player.rb'
 require_relative  '../lib/logic.rb'
@@ -19,12 +22,11 @@ puts "Second player name: #{name_two}, your token is 'O' "
 win_lose = false
 until win_lose
   arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  who = rand(0..1)
   display = Board.new(arr)
   display.display_board
   current_player = player_one
   count = 1
-  while  count <= 9 && !win_lose
+  while count <= 9 && !win_lose
     player_choice = player_one.get_choice(arr)
     current = Logic.turn(arr, current_player, player_choice)
     if current == true
@@ -40,11 +42,10 @@ until win_lose
     count += 1
   end
 
-
-
   puts "You've both tied, #{name_one} and #{name_two}" if win_lose == false
 
   reset_game = Logic.reset
+
   if reset_game == true
     puts "Let us start"
     win_lose = false
@@ -52,3 +53,5 @@ until win_lose
     break
   end
 end
+
+# rubocop: enable Style/GuardClause
