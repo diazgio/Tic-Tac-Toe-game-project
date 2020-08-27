@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 # rubocop: disable Style/StringLiterals
-require '../lib/board.rb'
-require '../lib/player.rb'
-require '../lib/logic.rb'
+require_relative  '../lib/board.rb'
+require_relative  '../lib/player.rb'
+require_relative  '../lib/logic.rb'
 
 puts " Hello and welcome to Tic Tac Toe Game."
 puts "First player enter your nickname: "
@@ -15,42 +17,38 @@ player_two = Player.new(name_two, 'O')
 puts "Second player name: #{name_two}, your token is 'O' "
 
 win_lose = false
-while !win_lose
-  arr = [1,2,3,4,5,6,7,8,9]
+until win_lose
+  arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  who = rand(0..1)
   display = Board.new(arr)
   display.display_board
-
-  for i in 1..9
-    if i % 2 != 0
-      player_choice = player_one.get_choice(display)
-      current = Logic.turn(display, player_one, player_choice)
-      if current == true
-        win_lose = true
-        puts "\nCongratulations, #{player_one.name}. You win!"
-        break
-      end
-    else
-      player_choice = player_two.get_choice(display)
-      current = Logic.turn(display, player_two, player_choice)
-      if current == true
-        win_lose = true
-        puts "\nCongratulations, #{player_two.name}. You win!"
-        break
-      end
+  current_player = player_one
+  count = 1
+  while  count <= 9 && !win_lose
+    player_choice = player_one.get_choice(arr)
+    current = Logic.turn(arr, current_player, player_choice)
+    if current == true
+      win_lose = true
+      puts "\nCongratulations, #{current_player.name}. You win!"
+      break
     end
+    if current_player == player_one
+      current_player = player_two
+    elsif current_player == player_two
+      current_player = player_one
+    end
+    count += 1
   end
 
-  if win_lose == false
-    puts "You've both tied, #{name_one} and #{name_two}"
-  end
+
+
+  puts "You've both tied, #{name_one} and #{name_two}" if win_lose == false
 
   reset_game = Logic.reset
   if reset_game == true
-    puts "Let\s start"
+    puts "Let us start"
     win_lose = false
   else
     break
   end
 end
-
-# rubocop: disable Style/StringLiterals

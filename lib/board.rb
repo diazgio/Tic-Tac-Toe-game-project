@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# rubocop:disable Style/Documentation
+
 class Board
   attr_accessor :board
   def initialize(board)
@@ -6,9 +10,9 @@ class Board
 
   def display_board
     puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
-    puts " ----------- "
+    puts ' ----------- '
     puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
-    puts " ----------- "
+    puts ' ----------- '
     puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
 
@@ -22,7 +26,8 @@ class Board
     @win = true if board[2] == board[5] && board[5] == board[8]
     @win = true if board[3] == board[4] && board[4] == board[5]
     @win = true if board[6] == board[7] && board[7] == board[8]
-    return @win
-
+    @win
   end
 end
+
+# rubocop:enable Style/Documentation

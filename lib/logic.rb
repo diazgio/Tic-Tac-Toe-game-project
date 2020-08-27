@@ -1,26 +1,28 @@
+# frozen_string_literal: true
+
 class Logic
-  def self.turn(display, player, player_choice)
+  def self.turn(arr, player, player_choice)
     valid = false
-    while !valid
-      if display.board[player_choice] == "X" || display.board[player_choice] == "O"
-        puts "Wrong postion, please choose another one"
+    until valid
+      if arr[player_choice] == 'X' ||  arr[player_choice] == 'O'
+        puts 'Wrong postion, please choose another one'
         return valid
       else
-        display.board[player_choice] = player.token
+        arr[player_choice] = player.token
         valid = true
         break
       end
     end
-    
-    display.display_board
-    display.win?
+    current_play = Board.new(arr)
+    current_play.display_board
+    current_play.win?
   end
 
   def self.reset
-    options = ['y','n','yes','no']
-    
+    options = %w[y n yes no]
+
     loop do
-      puts "Do you want to play again?: (y/n)"
+      puts 'Do you want to play again?: (y/n)'
       player_option = gets.chomp.downcase
       if options.include? player_option
         if player_option == 'yes' || player_option == 'y'
@@ -31,10 +33,9 @@ class Logic
           return check
         end
       else
-        puts "Sorry, wrong option pleas enter a valid option."
+        puts 'Sorry, wrong option please enter a valid option.'
       end
       check
     end
   end
-
 end
