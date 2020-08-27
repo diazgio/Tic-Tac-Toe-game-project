@@ -12,22 +12,17 @@ class Board
     puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
 
-  WIN_COMBINATIONS = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [6, 4, 2],
-  [0, 4, 8]
-]
-
   def win?
-    WIN_COMBINATIONS.detect do |combo|
-      @board[combo[0]] == @board[combo[1]] &&
-      @board[combo[1]] == @board[combo[2]]
-    end
+    @win = true if board[0] == board[1] && board[1] == board[2]
+    @win = true if board[0] == board[4] && board[4] == board[8]
+    @win = true if board[0] == board[3] && board[3] == board[6]
+    @win = true if board[1] == board[4] && board[4] == board[7]
+    @win = true if board[2] == board[4] && board[4] == board[6]
+    @win = true if board[2] == board[5] && board[5] == board[8]
+    @win = true if board[3] == board[4] && board[4] == board[5]
+    @win = true if board[6] == board[7] && board[7] == board[8]
+    return false
+
   end
 
 end
@@ -64,6 +59,8 @@ class Logic
     display.board[player_choice] = player.token
     display.display_board
     display.win?
+
+
   end
 
 end
