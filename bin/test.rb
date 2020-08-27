@@ -48,7 +48,7 @@ class Player
         return index
         break
       else
-        puts "Wrong number, please choose anthor number"
+        puts "Wrong position, please choose anthor one"
       end
     end
   end
@@ -57,7 +57,18 @@ end
 class Logic
 
   def self.turn(display, player, player_choice)
-    display.board[player_choice] = player.token
+    valid = false
+    while !valid
+      if display.board[player_choice] == "X" || display.board[player_choice] == "O"
+        puts "Wpong postion, please choose another one"
+        valid = false
+      else
+        valid = true
+        display.board[player_choice] = player.token
+      end
+      break
+    end
+
     display.display_board
     display.win?
   end
@@ -126,7 +137,13 @@ while !win_lose
   end
 
   reset_game = Logic.reset
+  if reset_game == true
+    puts "Let\s start"
+    win_lose = false
+  else
+    break
+  end
   
-  break unless reset_game == true
+
 
 end
