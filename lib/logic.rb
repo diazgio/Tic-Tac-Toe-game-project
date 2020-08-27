@@ -1,3 +1,5 @@
+# rubocop: disable Style/MultipleComparison
+
 class Logic
   def self.turn(arr, player, player_choice)
     valid = false
@@ -36,3 +38,5 @@ class Logic
     end
   end
 end
+
+# rubocop: disable Style/MultipleComparison

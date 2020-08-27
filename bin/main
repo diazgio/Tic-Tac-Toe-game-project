@@ -1,13 +1,12 @@
 #!/usr/bin/env ruby
-# frozen_string_literal: true
 
 # rubocop: disable Style/StringLiterals
 
 # rubocop: disable Style/GuardClause
 
-require_relative  '../lib/board.rb'
-require_relative  '../lib/player.rb'
-require_relative  '../lib/logic.rb'
+require_relative '../lib/board.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/logic.rb'
 
 puts " Hello and welcome to Tic Tac Toe Game."
 puts "First player enter your nickname: "
@@ -53,5 +52,7 @@ until win_lose
     break
   end
 end
+
+# rubocop: enable Style/StringLiterals
 
 # rubocop: enable Style/GuardClause
