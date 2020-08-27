@@ -1,0 +1,70 @@
+#!/usr/bin/env ruby
+# rubocop: disable Style/StringLiterals
+
+# Welcome the player to the game
+puts " Hello and welcome to Tic Tac Toe Game."
+# Ask the first player for nikename
+puts "First player enter your nickname: "
+# save player one name
+player_one = gets.chomp
+# print out player one name
+puts "First player name: #{player_one} "
+# Ask the second player nickname
+puts "Second player enter your nickname: "
+# save player two nickname
+player_two = gets.chomp
+# print out
+puts "Second player name: #{player_two} "
+# Election of tokens
+puts "First player choose your Token, write: X or O"
+item_one = gets.chomp
+item_two = "O"
+# print out the tokens for the players
+puts "Player one has #{item_one} and Player two has #{item_two}"
+# Game start
+puts "Let's start"
+# game_ends = if there's a winner or a draw
+# while !game_ends
+# Present the table and the positons to the users
+puts "{[0],[1],[2],
+   [3],[4],[5],
+   [6],[7],[8]}"
+# Create a empty array with nine positions
+table = [[], [], [], [], [], [], [], [], []]
+# Ask to the players to choose the first position of his token
+win = false
+until win
+  loop do
+    # asking move for each player
+    puts "#{player_one}, now it\s your move, choose a number from the available boxs on the board: "
+    entry = gets.chomp
+    puts "Your #{item_one} is in: #{table.each_with_index(entry)}"
+    # displaying the board
+    puts "{[0],[1],[2],
+    [3],[X],[5],
+    [6],[7],[8]}"
+    # asking move for each player
+    puts "#{player_two}, now it\s your move, choose a number from the available boxs on the board: "
+    entry_two = gets.chomp
+    # print the position that they choose. example!
+    # if player_two == true move
+    puts "Your #{item_one} is in: #{table.each_with_index(entry_two)}"
+    # displaying the board
+    puts "{[0],[1],[2],
+      [3],[X],[5],
+      [6],[7],[O]}"
+    # else
+    puts "Error: invalid move choose another box from the board"
+    # end
+  end
+  # checking if there was a winner/draw
+  # if player win have three tokens inline
+  win = true
+  puts " You Win ! Restar or end game"
+  # else
+  # draw
+  puts " Restar or end game"
+  # end
+end
+
+# rubocop: enable Style/StringLiterals
