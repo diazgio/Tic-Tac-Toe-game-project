@@ -13,6 +13,7 @@ class Board
   end
 
   def win?
+    @win = false
     @win = true if board[0] == board[1] && board[1] == board[2]
     @win = true if board[0] == board[4] && board[4] == board[8]
     @win = true if board[0] == board[3] && board[3] == board[6]
@@ -21,7 +22,7 @@ class Board
     @win = true if board[2] == board[5] && board[5] == board[8]
     @win = true if board[3] == board[4] && board[4] == board[5]
     @win = true if board[6] == board[7] && board[7] == board[8]
-    return false
+    return @win
 
   end
 
@@ -59,14 +60,32 @@ class Logic
     display.board[player_choice] = player.token
     display.display_board
     display.win?
+  end
 
-
+  def self.reset
+    options = ['y','n','yes','no']
+    
+    loop do
+      puts "Do you wanna play again?: (y/n)"
+      player_option = gets.chomp.downcase
+      if options.include? player_option
+        if player_option == 'yes' || player_option == 'y'
+          check = true
+          return check
+        else
+          check = false
+          return check
+        end
+      else
+        puts "Sorry, wrong option pleas enter a valid option."
+      end
+      check
+    end
   end
 
 end
 
 puts " Hello and welcome to Tic Tac Toe Game."
-
 puts "First player enter your nickname: "
 name_one = gets.chomp
 player_one = Player.new(name_one, 'X')
@@ -77,8 +96,9 @@ player_two = Player.new(name_two, 'O')
 puts "Second player name: #{name_two}, your token is 'O' "
 
 win_lose = false
-loop do
-  display = Board.new(Array.new(9, " "))
+while !win_lose
+  arr = [1,2,3,4,5,6,7,8,9]
+  display = Board.new(arr)
   display.display_board
 
   for i in 1..9
@@ -100,4 +120,13 @@ loop do
       end
     end
   end
+
+  if win_lose == false
+    puts "You've both tied, #{name_one} and #{name_two}"
+  end
+
+  reset_game = Logic.reset
+  
+  break unless reset_game == true
+
 end
