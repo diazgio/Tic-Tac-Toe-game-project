@@ -3,7 +3,7 @@ class Logic
     valid = false
     while !valid
       if display.board[player_choice] == "X" || display.board[player_choice] == "O"
-        puts "Wpong postion, please choose another one"
+        puts "Wrong postion, please choose another one"
         return valid
       else
         display.board[player_choice] = player.token
@@ -20,7 +20,7 @@ class Logic
     options = ['y','n','yes','no']
     
     loop do
-      puts "Do you wanna play again?: (y/n)"
+      puts "Do you want to play again?: (y/n)"
       player_option = gets.chomp.downcase
       if options.include? player_option
         if player_option == 'yes' || player_option == 'y'
