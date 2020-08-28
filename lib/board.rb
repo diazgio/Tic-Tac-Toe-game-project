@@ -28,6 +28,36 @@ class Board
     @win = true if @board[6] == @board[7] && @board[7] == @board[8]
     @win
   end
+
+  def get_choice(choice)
+    index = choice - 1
+    if @board.include? choice
+      return index
+    else
+      false
+    end
+  end
+
+  def valid_move(player_choice, player)
+    if @board[player_choice] == 'X' || @board[player_choice] == 'O'
+      return false
+    else
+      true
+    end
+  end
+
+  def update(player_choice, player)
+    @board[player_choice] = player.token
+  end
+
+  def switch_player(count,switch_players)
+    if count % 2 != 0
+      switch_players[0]
+    else
+      switch_players[1]
+    end
+  end
+
 end
 
 # rubocop: enable Metrics/CyclomaticComplexity

@@ -13,33 +13,7 @@
 require_relative '../lib/board.rb'
 require_relative '../lib/player.rb'
 
-def get_choice(arg)
-  loop do
-    puts 'Please enter a number between 1 to 9: '
-    choice = gets.chomp.to_i
-    index = choice - 1
-    if arg.include? choice
-      return index
-      break
-    else
-      puts 'Wrong position, please choose another one'
-    end
-  end
-end
 
-def valid_move(arr, player_choice, player)
-  valid = false
-  until valid
-    if arr[player_choice] == 'X' || arr[player_choice] == 'O'
-      puts 'Wrong postion, please choose another one'
-      return valid
-    else
-      arr[player_choice] = player.token
-      valid = true
-      break
-    end
-  end
-end
 
 def self.reset
   options = %w[y n yes no]
@@ -75,25 +49,31 @@ win_lose = false
 until win_lose
   board = Board.new
   puts board.display_board
-  current_player = player_one
+  arr_players = [player_one, player_two]
   count = 1
   while count <= 9 && !win_lose
-    player_choice = get_choice(arr)
-    valid_move(arr, player_choice, current_player)
-    new_board = Board.new
-    puts new_board.display_board(arr)
-    current = new_board.win?(arr)
-    if current == true
-      win_lose = true
-      puts "\nCongratulations, #{current_player.name}. You win!"
-      break
+    current_player = board.switch_player(count, arr_players)
+    puts 'Please enter a number between 1 to 9: '
+    choice = gets.chomp.to_i
+    player_choice = board.get_choice(choice)
+    if player_choice
+      if board.valid_move(player_choice, current_player)
+        board.update(player_choice, current_player)
+      else
+        puts "Position taken, please choose another one: "
+      end
+      puts board.display_board
+      current = board.win?
+      if current == true
+        win_lose = true
+        puts "\nCongratulations, #{current_player.name}. You win!"
+        break
+      end
+    else
+      puts "Wrong choice, please choose another number: "
     end
-
-    if current_player == player_one
-      current_player = player_two
-    elsif current_player == player_two
-      current_player = player_one
-    end
+  
+    
     count += 1
   end
 
