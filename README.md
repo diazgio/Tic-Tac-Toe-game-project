@@ -2,15 +2,15 @@
 
 # 🧐 Tic-Tac-Toe-Game project
 
-> One paragraph statement about the project.
+> Ruby's Tic-Tac-Toe Project
 
 ## Concept
-Tic-tac-toe, noughts and crosses, or Xs and Os is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.
+> Tic-tac-toe, noughts and crosses, or Xs and Os is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.
  
 
 ## 🛠 Getting Started
 
-To get a local copy up and running follow these simple example steps.
+> To get a local copy up and running follow these simple example steps.
 
 - Go to the main page of the repo.
 - Press the "Code" button and get the repo link.
@@ -32,14 +32,33 @@ To get a local copy up and running follow these simple example steps.
         main
         ```
 ### How To Play
+   - When run the game an empty board will shown:
+    
+   ![screenshot](./lib/screenshot/board.png)
+ 
+   - Have the first player go first. Though traditionally, the first player goes with "X"
+    
+   - Have the second player go second. The second player goes with "O"
+   
+   - Keep alternating moves until one of the players has drawn a row of three symbols and WIN
+   
+    - Win
+  ![screenshot](./lib/screenshot/win.png) 
+  
+   - Or Keep alternating moves until the players Tied and no one when 
+  
+    - Tied 
+  ![screenshot](./lib/screenshot/tied.png) 
 
 
-        
+## Screenshots
+    
  ![screenshot](./lib/screenshot/screenshot1.png)
         
-        
+ <br>      
+ <br>  
+
  ![screenshot](./lib/screenshot/screenshot2.png)
- 
  ## 🔧 Built With
  
  - Ruby v.2.7.0p0
