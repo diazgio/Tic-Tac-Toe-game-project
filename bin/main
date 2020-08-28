@@ -73,9 +73,8 @@ puts "Second player name: #{name_two}, your token is 'O' "
 
 win_lose = false
 until win_lose
-  arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   board = Board.new
-  puts board.display_board(arr)
+  puts board.display_board
   current_player = player_one
   count = 1
   while count <= 9 && !win_lose
