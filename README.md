@@ -4,15 +4,9 @@
 
 > One paragraph statement about the project.
 
-![screenshot](./app_screenshot.png)
-
-Additional description about the project and its features.
-
-## 🔧 Built With
-
-- Ruby v.2.7.0p0
-- Using Linters for Ruby Rubocop.
-- Using Bundler.
+## Concept
+Tic-tac-toe, noughts and crosses, or Xs and Os is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.
+ 
 
 ## 🛠 Getting Started
 
@@ -30,20 +24,27 @@ To get a local copy up and running follow these simple example steps.
 
  - Open a terminal
  - Copy this code : 
-
         ```
         git clone "put the link from github repo"
         ```
-
-- Go to the bin folder with:
-        ```
-        cd bin
-        ```
 - Run the program with this code :
+        ```
+        main
+        ```
+### How To Play
 
-        ```
-        ruby main.rb
-        ```
+
+        
+ ![screenshot](./lib/screenshot/screenshot1.png)
+        
+        
+ ![screenshot](./lib/screenshot/screenshot2.png)
+ 
+ ## 🔧 Built With
+ 
+ - Ruby v.2.7.0p0
+ - Using Linters for Ruby Rubocop.
+ - Using Bundler.
 
 ### Usage
 
