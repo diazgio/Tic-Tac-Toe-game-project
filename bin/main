@@ -6,7 +6,6 @@
 
 require_relative '../lib/board.rb'
 require_relative '../lib/player.rb'
-require_relative '../lib/logic.rb'
 
 def get_choice(arg)
   loop do
@@ -24,16 +23,16 @@ end
 
 def valid_move(arr, player_choice, player)
   valid = false
-    until valid
-      if arr[player_choice] == 'X' || arr[player_choice] == 'O'
-        puts 'Wrong postion, please choose another one'
-        return valid
-      else
-        arr[player_choice] = player.token
-        valid = true
-        break
-      end
+  until valid
+    if arr[player_choice] == 'X' || arr[player_choice] == 'O'
+      puts 'Wrong postion, please choose another one'
+      return valid
+    else
+      arr[player_choice] = player.token
+      valid = true
+      break
     end
+  end
 end
 
 def self.reset
@@ -69,20 +68,22 @@ puts "Second player name: #{name_two}, your token is 'O' "
 win_lose = false
 until win_lose
   arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  display = Board.new(arr)
-  display.display_board
+  board = Board.new
+  puts board.display_board(arr)
   current_player = player_one
   count = 1
   while count <= 9 && !win_lose
     player_choice = get_choice(arr)
     played = valid_move(arr, player_choice, current_player)
-    current = Logic.turn(arr)
+    new_board = Board.new
+    puts new_board.display_board(arr)
+    current = new_board.win?(arr)
     if current == true
       win_lose = true
       puts "\nCongratulations, #{current_player.name}. You win!"
       break
     end
-    
+
     if current_player == player_one
       current_player = player_two
     elsif current_player == player_two
