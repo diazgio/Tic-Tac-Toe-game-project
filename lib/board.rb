@@ -16,6 +16,10 @@ class Board
     #{@board[6]} | #{@board[7]} | #{@board[8]}"
   end
 
+  def full
+    @board.all?(String)
+  end
+
   def win?
     @win = false
     @win = true if @board[0] == @board[1] && @board[1] == @board[2]
@@ -50,14 +54,13 @@ class Board
     @board[player_choice] = player.token
   end
 
-  def switch_player(count,switch_players)
-    if count % 2 != 0
+  def switch_player(current_player, switch_players)
+    if current_player == switch_players[1]
       switch_players[0]
-    else
+    elsif current_player == switch_players[0]
       switch_players[1]
     end
   end
-
 end
 
 # rubocop: enable Metrics/CyclomaticComplexity

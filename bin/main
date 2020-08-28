@@ -13,8 +13,6 @@
 require_relative '../lib/board.rb'
 require_relative '../lib/player.rb'
 
-
-
 def self.reset
   options = %w[y n yes no]
 
@@ -50,15 +48,16 @@ until win_lose
   board = Board.new
   puts board.display_board
   arr_players = [player_one, player_two]
+  current_player = arr_players[0]
   count = 1
-  while count <= 9 && !win_lose
-    current_player = board.switch_player(count, arr_players)
+  while !win_lose
     puts 'Please enter a number between 1 to 9: '
     choice = gets.chomp.to_i
     player_choice = board.get_choice(choice)
     if player_choice
       if board.valid_move(player_choice, current_player)
         board.update(player_choice, current_player)
+        current_player = board.switch_player(current_player, arr_players)
       else
         puts "Position taken, please choose another one: "
       end
@@ -68,16 +67,14 @@ until win_lose
         win_lose = true
         puts "\nCongratulations, #{current_player.name}. You win!"
         break
+      elsif board.full && current == false
+        puts "You've both tied, #{name_one} and #{name_two}"
+        break
       end
     else
       puts "Wrong choice, please choose another number: "
     end
-  
-    
-    count += 1
   end
-
-  puts "You've both tied, #{name_one} and #{name_two}" if win_lose == false
 
   reset_game = reset
 
