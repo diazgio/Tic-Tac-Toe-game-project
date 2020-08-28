@@ -97,4 +97,4 @@ end
 
 # rubocop: enable Style/MultipleComparison
 
-# rubocop: disable Style/NegatedWhile
+# rubocop: enable Style/NegatedWhile

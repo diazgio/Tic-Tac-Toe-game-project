@@ -2,8 +2,6 @@
 
 # rubocop: disable Metrics/PerceivedComplexity
 
-# rubocop: disable Style/GuardClause
-
 class Board
   attr_accessor :board
   def initialize
@@ -68,5 +66,3 @@ end
 # rubocop: enable Metrics/CyclomaticComplexity
 
 # rubocop: enable Metrics/PerceivedComplexity
-
-# rubocop: enable Style/GuardClause
