@@ -64,7 +64,10 @@
  <br>      
  <br>  
 
- ![screenshot](./lib/screenshot/screenshot2.png)
+ ## Live Demo
+ 
+ [Live Demo Link](https://repl.it/@Sanadwj/PriceyCurlyAlphatest#main.rb)
+ 
  ## 🔧 Built With
  
  - Ruby v.2.7.0p0
