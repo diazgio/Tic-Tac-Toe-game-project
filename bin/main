@@ -4,6 +4,10 @@
 
 # rubocop: disable Style/GuardClause
 
+# rubocop:disable Lint/UnreachableCode
+
+# rubocop: disable Style/ConditionalAssignment
+
 require_relative '../lib/board.rb'
 require_relative '../lib/player.rb'
 
@@ -107,3 +111,7 @@ end
 # rubocop: enable Style/StringLiterals
 
 # rubocop: enable Style/GuardClause
+
+# rubocop:enable Lint/UnreachableCode
+
+# rubocop: enable Style/ConditionalAssignment

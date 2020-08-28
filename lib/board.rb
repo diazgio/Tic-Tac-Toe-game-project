@@ -1,5 +1,3 @@
-# rubocop: disable Metrics/AbcSize
-
 # rubocop: disable Metrics/CyclomaticComplexity
 
 # rubocop: disable Metrics/PerceivedComplexity
@@ -26,8 +24,6 @@ class Board
     @win
   end
 end
-
-# rubocop: enable Metrics/AbcSize
 
 # rubocop: enable Metrics/CyclomaticComplexity
 
