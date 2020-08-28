@@ -2,6 +2,8 @@
 
 # rubocop: disable Metrics/PerceivedComplexity
 
+# rubocop: disable Style/GuardClause
+
 class Board
   attr_accessor :board
   def initialize
@@ -36,15 +38,15 @@ class Board
   def get_choice(choice)
     index = choice - 1
     if @board.include? choice
-      return index
+      index
     else
       false
     end
   end
 
-  def valid_move(player_choice, player)
+  def valid_move(player_choice)
     if @board[player_choice] == 'X' || @board[player_choice] == 'O'
-      return false
+      false
     else
       true
     end
@@ -66,3 +68,5 @@ end
 # rubocop: enable Metrics/CyclomaticComplexity
 
 # rubocop: enable Metrics/PerceivedComplexity
+
+# rubocop: enable Style/GuardClause

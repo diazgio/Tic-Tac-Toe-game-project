@@ -4,11 +4,13 @@
 
 # rubocop: disable Style/GuardClause
 
-# rubocop:disable Lint/UnreachableCode
+# rubocop: disable Metrics/BlockNesting
 
 # rubocop: disable Style/ConditionalAssignment
 
 # rubocop: disable Style/MultipleComparison
+
+# rubocop: disable Style/NegatedWhile
 
 require_relative '../lib/board.rb'
 require_relative '../lib/player.rb'
@@ -49,13 +51,12 @@ until win_lose
   puts board.display_board
   arr_players = [player_one, player_two]
   current_player = arr_players[0]
-  count = 1
   while !win_lose
     puts 'Please enter a number between 1 to 9: '
     choice = gets.chomp.to_i
     player_choice = board.get_choice(choice)
     if player_choice
-      if board.valid_move(player_choice, current_player)
+      if board.valid_move(player_choice)
         board.update(player_choice, current_player)
         current_player = board.switch_player(current_player, arr_players)
       else
@@ -90,8 +91,10 @@ end
 
 # rubocop: enable Style/GuardClause
 
-# rubocop:enable Lint/UnreachableCode
+# rubocop: enable Metrics/BlockNesting
 
 # rubocop: enable Style/ConditionalAssignment
 
 # rubocop: enable Style/MultipleComparison
+
+# rubocop: disable Style/NegatedWhile
