@@ -31,23 +31,29 @@
         ```
         main
         ```
-### How To Play
+### 📝 How To Play
    - When run the game an empty board will shown:
     
    ![screenshot](./lib/screenshot/board.png)
- 
+   
+   - Every player should enter his name.
+   
    - Have the first player go first. Though traditionally, the first player goes with "X"
+    
+   - Enter the number of the position in the board.
     
    - Have the second player go second. The second player goes with "O"
    
+   - Enter the number of the position in the board.
+   
    - Keep alternating moves until one of the players has drawn a row of three symbols and WIN
    
-    - Win
+    
   ![screenshot](./lib/screenshot/win.png) 
   
    - Or Keep alternating moves until the players Tied and no one when 
   
-    - Tied 
+    
   ![screenshot](./lib/screenshot/tied.png) 
 
 
