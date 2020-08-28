@@ -8,6 +8,54 @@ require_relative '../lib/board.rb'
 require_relative '../lib/player.rb'
 require_relative '../lib/logic.rb'
 
+def get_choice(arg)
+  loop do
+    puts 'Please enter a number between 1 to 9: '
+    choice = gets.chomp.to_i
+    index = choice - 1
+    if arg.include? choice
+      return index
+      break
+    else
+      puts 'Wrong position, please choose another one'
+    end
+  end
+end
+
+def valid_move(arr, player_choice, player)
+  valid = false
+    until valid
+      if arr[player_choice] == 'X' || arr[player_choice] == 'O'
+        puts 'Wrong postion, please choose another one'
+        return valid
+      else
+        arr[player_choice] = player.token
+        valid = true
+        break
+      end
+    end
+end
+
+def self.reset
+  options = %w[y n yes no]
+
+  loop do
+    puts 'Do you want to play again?: (y/n)'
+    player_option = gets.chomp.downcase
+    if options.include? player_option
+      if player_option == 'yes' || player_option == 'y'
+        check = true
+      else
+        check = false
+      end
+      return check
+    else
+      puts 'Sorry, wrong option please enter a valid option.'
+    end
+    check
+  end
+end
+
 puts " Hello and welcome to Tic Tac Toe Game."
 puts "First player enter your nickname: "
 name_one = gets.chomp
@@ -26,13 +74,15 @@ until win_lose
   current_player = player_one
   count = 1
   while count <= 9 && !win_lose
-    player_choice = player_one.get_choice(arr)
-    current = Logic.turn(arr, current_player, player_choice)
+    player_choice = get_choice(arr)
+    played = valid_move(arr, player_choice, current_player)
+    current = Logic.turn(arr)
     if current == true
       win_lose = true
       puts "\nCongratulations, #{current_player.name}. You win!"
       break
     end
+    
     if current_player == player_one
       current_player = player_two
     elsif current_player == player_two
@@ -43,7 +93,7 @@ until win_lose
 
   puts "You've both tied, #{name_one} and #{name_two}" if win_lose == false
 
-  reset_game = Logic.reset
+  reset_game = reset
 
   if reset_game == true
     puts "Let us start"
