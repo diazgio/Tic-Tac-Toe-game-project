@@ -8,6 +8,8 @@
 
 # rubocop: disable Style/ConditionalAssignment
 
+# rubocop: disable Style/MultipleComparison
+
 require_relative '../lib/board.rb'
 require_relative '../lib/player.rb'
 
@@ -78,7 +80,7 @@ until win_lose
   count = 1
   while count <= 9 && !win_lose
     player_choice = get_choice(arr)
-    played = valid_move(arr, player_choice, current_player)
+    valid_move(arr, player_choice, current_player)
     new_board = Board.new
     puts new_board.display_board(arr)
     current = new_board.win?(arr)
@@ -115,3 +117,5 @@ end
 # rubocop:enable Lint/UnreachableCode
 
 # rubocop: enable Style/ConditionalAssignment
+
+# rubocop: enable Style/MultipleComparison
