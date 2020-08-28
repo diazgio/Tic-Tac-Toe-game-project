@@ -8,4 +8,4 @@ class Logic
   end
 end
 
-# rubocop: disable Style/MultipleComparison
+# rubocop: enable Style/MultipleComparison
