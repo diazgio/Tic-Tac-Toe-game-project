@@ -1,8 +1,7 @@
 require_relative '../lib/player'
-
 describe Player do
-  let (:first_player) { Player.new('Gior', 'X') }
-  let (:second_player) { Player.new('Ade', 'O') }
+  let(:first_player) { Player.new('Gior', 'X') }
+  let(:second_player) { Player.new('Ade', 'O') }
   context 'Initialize' do
     it 'return name' do
       expect(first_player.name).to eq('Gior')

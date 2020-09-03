@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# 🧐 Tic-Tac-Toe-Game project
+# 🧐 Tic-Tac-Toe-Game rspec project
 
 > Ruby's Tic-Tac-Toe Project
 
@@ -91,6 +91,11 @@
 - Github: [@sanadwj](https://github.com/sanadwj)
 - Twitter: [@sandooog](https://twitter.com/sandooog)
 - Linkedin: [sanad-abujbara](https://linkedin.com/in/sanad-abujbara)
+
+👤 **Adesoji Adewumi**
+- Github: [@AdesojiCodeMaster](https://github.com/AdesojiCodeMaster) 
+- Twitter: [@codemas22665735](https://twitter.com/codemas22665735) 
+- Linkedin: [linkedin](https://www.linkedin.com/in/adesoji-adewumi-7752aba5)
 
 ## 🤝 Contributing
 
