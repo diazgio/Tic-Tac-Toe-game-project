@@ -20,10 +20,10 @@ end
 
 context '#full' do
   let(:table){ Board.new }
-  it 'cheking if all are no tokens' do
+  it 'checks if all are not tokens' do
     expect(table.full).to eq(false)
   end
-  it 'check if all are tokens' do
+  it 'checks if all are tokens' do
     table.instance_variable_set(:@board, %W[X O O X O X O X X])
     expect(table.full).to eq(true)
   end
@@ -31,13 +31,29 @@ end
 
 context '#win' do
   let(:table){ Board.new }
-  it 'check when nobody win' do
+  it 'checks when nobody win' do
     expect(table.win?).to eq(false)
   end
-  it 'check if someone win' do
+  it 'checks if someone win' do
     table.instance_variable_set(:@board, %W[X X X O 5 6 O 8 9])
     expect(table.win?).to eq(true)
   end
+end
+
+context '#get_choice' do 
+let(:table) { Board.new}
+
+it 'gets player argument if true' do
+    argument = 5
+    expect(table.get_choice(5)).to eq(5-1)
+end
+
+it 'returns false if player argument is wrong' do
+    argument = 12
+    expect(table.get_choice(12)).to eq(false)
+
+end
+
 end
 
 
